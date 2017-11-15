@@ -10,22 +10,21 @@ export default {
       payload: payload
     }
   },
-  login: payload =>{
-    return{
+  login: payload => {
+    return {
       type: LOGIN,
-      payload :payload
+      payload: payload
     }
   },
-  logout:()=>{
-    return{
+  logout: () => {
+    return {
       type: LOGOUT
     }
   },
-  loadHome: payload =>{
-    return{
+  loadHome: payload => {
+    return {
       type: LOAD_HOME,
       payload: payload
     }
   }
 }
-

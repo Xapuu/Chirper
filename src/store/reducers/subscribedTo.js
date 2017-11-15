@@ -1,11 +1,8 @@
-export default (
-  store =[],
-  action
-) => {
-  switch(action.type){
+export default (store = [], action) => {
+  switch (action.type) {
     case 'LOAD_HOME':
-    return [...store,...action.payload]
+      return [...store, ...action.payload]
     default:
-    return store
+      return store
   }
 }

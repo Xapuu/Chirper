@@ -76,7 +76,7 @@ let fetchSubscribedTo = (authToken, subscriptions) => {
   return dispatch => {
     dispatch(status.requestCalling())
     return fetch(
-      `${baseUrl}/appdata/${appKey}/chirps?query{"author":{"$in":${subscriptions}}}`,
+      `${baseUrl}/appdata/${appKey}/chirps?query={"author":{"$in":${JSON.stringify(subscriptions)}}}&sort={"_kmd.ect": 1}"`,
       {
         method: 'GET',
         headers: {
@@ -96,9 +96,32 @@ let fetchSubscribedTo = (authToken, subscriptions) => {
   }
 }
 
+let postChirp = (authToken, payload) => {
+  return dispatch => {
+    dispatch(status.requestCalling())
+    return fetch(`${baseUrl}/appdata/${appKey}/chirps`, {
+      method: 'POST',
+      headers: {
+        Authorization: 'Kinvey ' + authToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(res => res.json(), err => dispatch(status.error()))
+      .then(json => {
+        if (json.error) {
+          dispatch(status.error())
+          return
+        }
+        dispatch(status.requestFinished())
+      })
+  }
+}
+
 export default {
   register,
   login,
   logout,
-  fetchSubscribedTo
+  fetchSubscribedTo,
+  postChirp
 }
