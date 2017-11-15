@@ -1,13 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import actions from './../../store/actions/fetcher'
 
 let Navbar = props => {
   return (
     <div className='menu'>
-      <a href='#'>Home</a>
+      <Link to='/'>Home</Link>
       <a href='#'>Discover</a>
-      <a href='#'>Me</a>
+      <Link to='/me'>Me</Link>
       <a onClick={()=>{props.logoutFunc(props.store._kmd.authtoken)}}>Logout</a>
     </div>
   )

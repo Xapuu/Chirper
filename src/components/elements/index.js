@@ -4,19 +4,20 @@ import { connect } from 'react-redux'
 
 import Auth from './Auth'
 import Home from './Home'
+import Me from './Me'
 
 let ElementBlender = props => {
   if (Object.keys(props.store.auth).length===0) {
     return (
       <Switch>
-        <Route exact path='/' component={Auth} />
+        <Route path='/' component={Auth} />
       </Switch>
     )
   }
-
   return (
     <Switch>
-      <Route exact path='/' component={Home} />
+      <Route  path="/me" component={Me} />
+      <Route exact path="/" component={Home} />
     </Switch>
   )
 }

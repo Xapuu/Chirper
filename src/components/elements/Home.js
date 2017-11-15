@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import actions from './../../store/actions/fetcher'
 
 import Chirp from './Chirp'
+import UserCard from './UserCard'
 
 class Home extends Component {
   componentDidMount () {
@@ -16,37 +17,7 @@ class Home extends Component {
         <div className='content'>
           <div className='chirper'>
             <h2 className='titlebar'>{this.props.store.auth.username}</h2>
-            <form
-              id='formSubmitChirp'
-              className='chirp-form'
-              onSubmit={e => {
-                e.preventDefault()
-
-                let payload = {
-                  ...this.state,
-                  author: this.props.store.auth.username
-                }
-                this.props.postChirp(
-                  this.props.store.auth._kmd.authtoken,
-                  payload
-                )
-              }}
-            >
-              <textarea
-                name='text'
-                onChange={e => {
-                  this.setState({ text: e.target.value })
-                }}
-                className='chirp-input'
-                defaultValue={''}
-              />
-              <input
-                className='chirp-submit'
-                id='btnSubmitChirp'
-                defaultValue='Chirp'
-                type='submit'
-              />
-            </form>
+           <UserCard />
             <div id='userStats' className='user-details'>
               <span>0 chirps</span>
               <span>
@@ -75,8 +46,9 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    fetchSubscribedTo: (token,payload) => dispatch(actions.fetchSubscribedTo(token,payload)),
-    postChirp: (token,payload) => dispatch(actions.postChirp(token,payload))
+    fetchSubscribedTo: (token, payload) =>
+      dispatch(actions.fetchSubscribedTo(token, payload)),
+    postChirp: (token, payload) => dispatch(actions.postChirp(token, payload))
   }
 }
 
