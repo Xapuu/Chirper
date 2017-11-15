@@ -1,5 +1,5 @@
 export default (
-  store ={},
+  store =[],
   action
 ) => {
   switch(action.type){
