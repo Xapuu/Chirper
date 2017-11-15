@@ -1,5 +1,6 @@
 const LOGIN = 'LOGIN'
 const REGISTER = 'REGISTER'
+const LOGOUT = 'LOGOUT'
 
 export default {
   register: payload => {
@@ -12,6 +13,11 @@ export default {
     return{
       type: LOGIN,
       payload :payload
+    }
+  },
+  logout:()=>{
+    return{
+      type: LOGOUT
     }
   }
 }
