@@ -1,11 +1,12 @@
 export default (store = {}, action) => {
   switch (action.type) {
     case 'REGISTER':
-      return action.payload
+      return { ...store, ...action.payload }
     case 'LOGIN':
-      return store
+    console.log(action)
+      return { ...store, ...action.payload }
     case 'LOGOUT':
-      return store
+      return {}
     default:
       return store
   }

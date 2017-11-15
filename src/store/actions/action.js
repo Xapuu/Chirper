@@ -7,6 +7,12 @@ export default {
       type: REGISTER,
       payload: payload
     }
+  },
+  login: payload =>{
+    return{
+      type: LOGIN,
+      payload :payload
+    }
   }
 }
 

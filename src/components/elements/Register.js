@@ -5,7 +5,6 @@ import actions from './../../store/actions/fetcher'
 let Register = props => {
   return (
     <div>
-      {console.log(props)}
       <form
         onSubmit={e => {
           e.preventDefault()
@@ -36,11 +35,7 @@ let Register = props => {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    store: state
-  }
-}
+
 
 function mapDispatchToProps (dispatch) {
   return {
@@ -48,4 +43,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(null, mapDispatchToProps)(Register)

@@ -1,9 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import actions from './../../store/actions/fetcher'
 
 let Login = props => {
   return (
     <div>
-      <form  id='formLogin' class='form'>
+      <form
+        id='formLogin'
+        class='form'
+        onSubmit={e => {
+          e.preventDefault()
+          props.registerFunc(props.userProps)
+        }}
+      >
         <label>Username</label>
         <input onChange={e => props.dataFunc(e)} name='username' type='text' />
         <label>Password</label>
@@ -26,4 +35,10 @@ let Login = props => {
   )
 }
 
-export default Login
+function mapDispatchToProps (dispatch) {
+  return {
+    registerFunc: data => dispatch(actions.login(data))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

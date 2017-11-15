@@ -25,7 +25,7 @@ class Auth extends Component {
       
     if (this.state.login) {
       return <div>
-        <Login  viewFunc={this.loginState} dataFunc={this.dataCollector} />
+        <Login userProps={this.state}  viewFunc={this.loginState} dataFunc={this.dataCollector} />
       </div>
     }
     return <Register userProps={this.state} viewFunc={this.loginState} dataFunc={this.dataCollector} />
