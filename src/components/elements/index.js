@@ -6,7 +6,6 @@ import Auth from './Auth'
 import Home from './Home'
 
 let ElementBlender = props => {
-    console.log(props)
   if (Object.keys(props.store.auth).length===0) {
     return (
       <Switch>

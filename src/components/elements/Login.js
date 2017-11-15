@@ -7,7 +7,7 @@ let Login = props => {
     <div>
       <form
         id='formLogin'
-        class='form'
+        className='form'
         onSubmit={e => {
           e.preventDefault()
           props.registerFunc(props.userProps)

@@ -4,8 +4,7 @@ import actions from './../../store/actions/fetcher'
 
 let Navbar = props => {
   return (
-    <div class='menu'>
-      {console.log()}
+    <div className='menu'>
       <a href='#'>Home</a>
       <a href='#'>Discover</a>
       <a href='#'>Me</a>

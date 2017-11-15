@@ -4,7 +4,6 @@ let Chirp = props => {
   return (
     <div>
       <article className='chirp'>
-          {console.log(props)}
         <div className='titlebar'>
           <a href='#' className='chirp-author'>{props.props.author}</a>
           <span className='chirp-time'>{calcTime(props.props._kmd.lmt)}</span>

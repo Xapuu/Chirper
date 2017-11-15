@@ -1,54 +1,48 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import actions from './../../store/actions/fetcher'
 
-import Chirp from './Chirp'
 
-let Home = props => {
-  return (
-    <section id='viewFeed'>
-      <div className='content'>
-        <div className='chirper'>
-          <h2 className='titlebar'>Pesho</h2>
-          <form id='formSubmitChirp' className='chirp-form'>
-            <textarea name='text' className='chirp-input' defaultValue={''} />
-            <input
-              className='chirp-submit'
-              id='btnSubmitChirp'
-              defaultValue='Chirp'
-              type='submit'
-            />
-          </form>
-          <div id='userStats' className='user-details'>
-            <span>0 chirps</span>
-            {' '}
-            |
-            {' '}
-            <span>1 following</span>
-            {' '}
-            |
-            {' '}
-            <span>0 followers</span>
+class Home extends Component {
+
+  componentDidMount(){
+      console.log(this.props.store.auth)
+
+      
+  }
+
+  render () {
+    return (
+      <section id='viewFeed'>
+        <div className='content'>
+          <div className='chirper'>
+            <h2 className='titlebar'>Pesho</h2>
+            <form id='formSubmitChirp' className='chirp-form'>
+              <textarea name='text' className='chirp-input' defaultValue={''} />
+              <input
+                className='chirp-submit'
+                id='btnSubmitChirp'
+                defaultValue='Chirp'
+                type='submit'
+              />
+            </form>
+            <div id='userStats' className='user-details'>
+              <span>0 chirps</span>
+              <span>1 following</span>
+              <span>0 followers</span>
+            </div>
+          </div>
+          <div id='chirps' className='chirps'>
+
+            <h2 className='titlebar'>Chirps</h2>
+
           </div>
         </div>
-        <div id='chirps' className='chirps'>
-
-          <h2 className='titlebar'>Chirps</h2>
-{/* 
-          {console.log(props.store.auth.subscriptions)}
-          {props.store.chirps
-            .filter(elem => {
-              if (props.store.auth.subscriptions.indexOf(elem.author) >= 0) {
-                return elem
-              }
-            })
-            .map(x => {
-              return <Chirp key={x._id} props={x}/>
-            })} */}
-        </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
+  }
 }
+
 
 function mapStateToProps (state) {
   return {
@@ -56,4 +50,10 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, null)(Home)
+function mapDispatchToProps (dispatch) {
+  return {
+    registerFunc: elem => dispatch(actions.fetchSubscribedTo(elem))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
