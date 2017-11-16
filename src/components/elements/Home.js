@@ -21,7 +21,7 @@ class Home extends Component {
             <div id='userStats' className='user-details'>
               <span>0 chirps</span>
               <span>
-                {this.props.store.auth.subscriptions.length} following
+                {(this.props.store.auth.subscriptions.length)} following
               </span>
               <span>0 followers</span>
             </div>

@@ -10,7 +10,7 @@ import storeGen from './store/store'
 let store = storeGen
 
 ReactDOM.render(
-  <Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
+  <BrowserRouter><Provider store={store}><App /></Provider></BrowserRouter>,
   document.getElementById('root')
 )
 registerServiceWorker()

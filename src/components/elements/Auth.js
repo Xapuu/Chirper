@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import actions from './../../store/actions/fetcher'
@@ -22,26 +22,37 @@ class Auth extends Component {
   }
 
   render () {
-      
     if (this.state.login) {
-      return <div>
-        <Login userProps={this.state}  viewFunc={this.loginState} dataFunc={this.dataCollector} />
-      </div>
+      return (
+        <div>
+          <Login
+            userProps={this.state}
+            viewFunc={this.loginState}
+            dataFunc={this.dataCollector}
+          />
+        </div>
+      )
     }
-    return <Register userProps={this.state} viewFunc={this.loginState} dataFunc={this.dataCollector} />
+    return (
+      <Register
+        userProps={this.state}
+        viewFunc={this.loginState}
+        dataFunc={this.dataCollector}
+      />
+    )
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
-    store:state
-  };
+    store: state
+  }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
-      registerFunc: () => dispatch(actions(this.state))
-  };
+    registerFunc: () => dispatch(actions(this.state))
+  }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Auth)
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)

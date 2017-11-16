@@ -30,17 +30,12 @@ let Register = props => {
         <input id='btnRegister' value='Register' type='submit' />
       </form>
       <button onClick={() => props.viewFunc()}>Log in</button>
-
     </div>
   )
 }
-
-
-
 function mapDispatchToProps (dispatch) {
   return {
     registerFunc: elem => dispatch(actions.register(elem))
   }
 }
-
 export default connect(null, mapDispatchToProps)(Register)

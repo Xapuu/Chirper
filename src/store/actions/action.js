@@ -2,6 +2,7 @@ const LOGIN = 'LOGIN'
 const REGISTER = 'REGISTER'
 const LOGOUT = 'LOGOUT'
 const LOAD_HOME = 'LOAD_HOME'
+const LOAD_ME = 'LOAD_ME'
 
 export default {
   register: payload => {
@@ -24,6 +25,12 @@ export default {
   loadHome: payload => {
     return {
       type: LOAD_HOME,
+      payload: payload
+    }
+  },
+  loadMe: payload => {
+    return {
+      type: LOAD_ME,
       payload: payload
     }
   }

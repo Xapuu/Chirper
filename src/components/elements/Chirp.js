@@ -5,7 +5,7 @@ let Chirp = props => {
     <div>
       <article className='chirp'>
         <div className='titlebar'>
-          <a href='#' className='chirp-author'>{props.props.author}</a>
+          <a href='/' className='chirp-author'>{props.props.author}</a>
           <span className='chirp-time'>{calcTime(props.props._kmd.lmt)}</span>
         </div>
         <p>{props.props.text}</p>

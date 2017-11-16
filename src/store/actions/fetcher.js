@@ -1,6 +1,5 @@
 import status from './status'
 import action from './action'
-
 const appKey = 'kid_SJnmNchR-'
 const appSecret = '65641a6ffdd0400e8619f72defe550af'
 const baseUrl = 'https://baas.kinvey.com'
@@ -45,8 +44,10 @@ let login = payload => {
           dispatch(status.error)
           return
         }
+
+        sessionStorage.setItem('authtoken', json._kmd.authtoken)
         dispatch(action.login(json))
-        dispatch(status.requestFinished)
+        dispatch(status.requestFinished())
       })
   }
 }
@@ -66,6 +67,7 @@ let logout = payload => {
           dispatch(status.error())
           return
         }
+        sessionStorage.clear()
         dispatch(action.logout())
         dispatch(status.requestFinished())
       })
@@ -113,6 +115,31 @@ let postChirp = (authToken, payload) => {
           dispatch(status.error())
           return
         }
+        dispatch(action.loadMe(json))
+        dispatch(status.requestFinished())
+      })
+  }
+}
+
+let fetchMyChirps = (authToken, myName) => {
+  return dispatch => {
+    dispatch(status.requestCalling())
+    return fetch(
+      `${baseUrl}/appdata/${appKey}/chirps?query={"author":"${myName}"}&sort={"_kmd.ect": 1}"`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: 'Kinvey ' + authToken
+        }
+      }
+    )
+      .then(res => res.json(), err => dispatch(status.error))
+      .then(json => {
+        if (json.error) {
+          dispatch(status.error())
+          return
+        }
+        dispatch(action.loadMe(json))
         dispatch(status.requestFinished())
       })
   }
@@ -123,5 +150,6 @@ export default {
   login,
   logout,
   fetchSubscribedTo,
-  postChirp
+  postChirp,
+  fetchMyChirps
 }

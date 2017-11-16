@@ -6,10 +6,9 @@ import actions from './../../store/actions/fetcher'
 let Navbar = props => {
   return (
     <div className='menu'>
-      <Link to='/'>Home</Link>
-      <a href='#'>Discover</a>
+      <Link to='/home'>Home</Link>
       <Link to='/me'>Me</Link>
-      <a onClick={()=>{props.logoutFunc(props.store._kmd.authtoken)}}>Logout</a>
+      <div onClick={()=>{props.logoutFunc(props.store._kmd.authtoken)}}>Logout</div>
     </div>
   )
 }

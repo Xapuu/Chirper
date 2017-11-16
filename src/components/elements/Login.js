@@ -22,7 +22,6 @@ let Login = props => {
           type='password'
         />
         <input id='btnLogin' value='Sign In' type='submit' />
-
       </form>
       <button
         onClick={() => {
@@ -34,11 +33,9 @@ let Login = props => {
     </div>
   )
 }
-
 function mapDispatchToProps (dispatch) {
   return {
     registerFunc: data => dispatch(actions.login(data))
   }
 }
-
 export default connect(null, mapDispatchToProps)(Login)
