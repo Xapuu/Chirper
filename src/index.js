@@ -14,3 +14,9 @@ ReactDOM.render(
   document.getElementById('root')
 )
 registerServiceWorker()
+
+
+
+/**
+ * Hotfix 1
+ */
