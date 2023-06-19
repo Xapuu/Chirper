@@ -22,4 +22,7 @@ registerServiceWorker()
  * 
  * 
  * 
+
+/**
+ * Hotfix 1
  */
